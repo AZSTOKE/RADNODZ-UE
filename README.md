@@ -3,13 +3,13 @@
 RADNODZ は、株式会社AZSTOKE の RIGDOCKS を Unreal Engine から操作するためのプラグインです。
 Blueprint / C++ から AZ_* API を呼び出し、REAPER や Wwise などのオーディオ制作ツールをリモート操作できます。
 
-> 本プラグインの利用には、操作対象となる RIGDOCKS のライセンスが別途必要です。
+> 本プラグインの利用には、RADNODZプラグイン及び実行するAPIに対応するRIGDOCKSプラグイン（BRONZE/SILVER/GOLD）のライセンスが別途必要です。
 
 ## 動作環境
 
-- Unreal Engine 5.7
-- 対応プラットフォーム: Windows (x64) / Android (arm64-v8a, x86_64) / macOS (x86_64, arm64)
-- 接続先: RIGDOCKS がインストールされた PC
+- Unreal Engine 5
+- 対応プラットフォーム: Windows (x64) / Android (arm64, x86_64) / macOS (x86_64, arm64)
+- 接続先: RIGDOCKS、RADNODZプラグイン がインストールされた PC
 
 ## 導入方法
 
@@ -30,7 +30,7 @@ Blueprint / C++ から AZ_* API を呼び出し、REAPER や Wwise などのオ�
 
 | モジュール | 内容 |
 |---|---|
-| RadnodzClientPlugin | 接続・通信(TLS、ペアリング) |
+| RadnodzClientPlugin | 接続・通信 |
 | RadnodzClientEditerPlugin | エディタ拡張 |
 | RigdocksBronzePlugin / RigdocksSilverPlugin / RigdocksGoldPlugin | 各ランクの AZ_* API |
 
