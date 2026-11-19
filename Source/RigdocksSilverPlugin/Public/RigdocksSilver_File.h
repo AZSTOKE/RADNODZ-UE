@@ -33,4 +33,15 @@ public:
 		meta = (BlueprintInternalUseOnly = "true", RequiredPins = "client"))
 	static TArray<FString> AZ_GetFilePathList(URadnodzClient* client, FString folder_path, FString search_extension = "");
 
+	// App data folder on the connected PC (parent of the RIGDOCKS Bridge folder)
+	//   Windows : %APPDATA% / macOS : ~/Library/Application Support
+	UFUNCTION(BlueprintCallable, Category = "RADNODZ|SILVER|File",
+		meta = (BlueprintInternalUseOnly = "true", RequiredPins = "client"))
+	static FString AZ_GetAppDataPath(URadnodzClient* client);
+
+	// RIGDOCKS Bridge folder on the connected PC
+	UFUNCTION(BlueprintCallable, Category = "RADNODZ|SILVER|File",
+		meta = (BlueprintInternalUseOnly = "true", RequiredPins = "client"))
+	static FString AZ_GetBridgeDataPath(URadnodzClient* client);
+
 };

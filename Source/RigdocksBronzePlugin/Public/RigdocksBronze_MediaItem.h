@@ -797,4 +797,8 @@ public:
 		meta = (BlueprintInternalUseOnly = "true", RequiredPins = "client"))
 	static void AZ_SplitSelectedTrackMedia(URadnodzClient* client, UReaProject* proj, int selectedTrackID, int trackItemID, double splitPosition, UMediaItem*& leftItem, UMediaItem*& rightItem);
 
+	UFUNCTION(BlueprintCallable, Category = "RADNODZ|BRONZE|MediaItem|Source",
+		meta = (BlueprintInternalUseOnly = "true", RequiredPins = "client"))
+	static FString AZ_GetMediaItemSourcePath(URadnodzClient* client, UMediaItem* item);
+
 };

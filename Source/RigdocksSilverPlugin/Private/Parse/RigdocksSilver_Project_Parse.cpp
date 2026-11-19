@@ -219,3 +219,33 @@ UReaProject* URigdocksSilver_Project_Parse::AZ_GetProjectFromName_Parse(URigdock
 	projObject->SetPointer((void*)proj);
 	return projObject;
 }
+
+void URigdocksSilver_Project_Parse::AZ_LaunchReaper_Parse(URigdocksRpcCall* call)
+{
+	if (call == nullptr)
+	{
+		return;
+	}
+
+	SILVER::AZ_LaunchReaper_Parse(call->Get());
+}
+
+bool URigdocksSilver_Project_Parse::AZ_IsReaperRunning_Parse(URigdocksRpcCall* call)
+{
+	if (call == nullptr)
+	{
+		return false;
+	}
+
+	return SILVER::AZ_IsReaperRunning_Parse(call->Get());
+}
+
+void URigdocksSilver_Project_Parse::AZ_QuitReaper_Parse(URigdocksRpcCall* call)
+{
+	if (call == nullptr)
+	{
+		return;
+	}
+
+	SILVER::AZ_QuitReaper_Parse(call->Get());
+}

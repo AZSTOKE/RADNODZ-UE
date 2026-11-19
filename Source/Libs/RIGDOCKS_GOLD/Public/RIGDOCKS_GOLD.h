@@ -14,8 +14,10 @@
 #include "Object/RenderingOptions.h"
 #include "Object/LoudnessRecord.h"
 #include "Object/MIDDLESCANNER_Options.h"
+#include "Object/TSPRecordingGroup.h"
 #include <memory>
 #include <string>
+#include <tuple>
 #include <vector>
 
 class ReaProject;
@@ -139,7 +141,15 @@ namespace RADNODZ_client::GOLD
 	std::vector<std::string> AZ_SVN_Export_CommitOnly(TcpClient& tcpClient, std::string repositoryUrl, std::string toDir, int mode = 0, int revision = -1, std::vector<std::string> exclusionList = {}, bool isRegex = true);
 	std::vector<std::string> AZ_SVN_ExportAudioToProject(TcpClient& tcpClient, std::string repositoryUrl, int revision, std::string toDir = "", std::string extension = "wav", bool toProjectDir = true);
 	std::vector<std::string> AZ_SVN_ExportAudioToProject_CommitOnly(TcpClient& tcpClient, std::string repositoryUrl, int revision, std::string toDir = "", std::string extension = "wav", bool toProjectDir = true);
-	
+
+	/****************** IR *****************************/
+
+	// returns (signal duration [sec], TSP signal wav path, TSP info json path)
+	std::tuple<double, std::string, std::string> AZ_GenerateLinearTSP(TcpClient& tcpClient, std::string outputPath, int sampleRate = 48000, double sweepDuration = 5.0, double silenceDuration = 5.0, int repeatCount = 1);
+	std::tuple<double, std::string, std::string> AZ_GenerateLogTSP(TcpClient& tcpClient, std::string outputPath, int sampleRate = 48000, double sweepDuration = 10.0, double silenceDuration = 5.0, int repeatCount = 1, double startFreq = 20.0, double endFreq = 0.0);
+	void AZ_CalcImpulseResponseFromLinearTSP(TcpClient& tcpClient, std::string tspInfoPath, std::vector<TSPRecordingGroup> recordingGroups, std::string outputPath, double irLength = 0.0, bool trimStart = true, bool normalize = true);
+	void AZ_CalcImpulseResponseFromLogTSP(TcpClient& tcpClient, std::string tspInfoPath, std::vector<TSPRecordingGroup> recordingGroups, std::string outputPath, double irLength = 0.0, bool trimStart = true, bool normalize = true);
+
 	/****************** Googl SpreadSheet *****************************/
 
 	GSheetConnection* AZ_GSheet_Connect_UserAccount(TcpClient& tcpClient, std::string spreadSheetId, std::string clientId = "");

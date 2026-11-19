@@ -919,6 +919,72 @@ void URigdocksSilver_Track_Parse::AZ_SetSelectedTrackIdRecording_Parse(URigdocks
 	SILVER::AZ_SetSelectedTrackIdRecording_Parse(call->Get());
 }
 
+// -1 (failure) and unknown values are returned as Off
+static AZ_RecordMonitorMode TrackParse_ToRecordMonitorMode(int value)
+{
+	return (value >= 0 && value <= 2) ? (AZ_RecordMonitorMode)value : AZ_RecordMonitorMode::Off;
+}
+
+AZ_RecordMonitorMode URigdocksSilver_Track_Parse::AZ_GetTrackItemRecordMonitoring_Parse(URigdocksRpcCall* call)
+{
+	if (call == nullptr)
+	{
+		return AZ_RecordMonitorMode::Off;
+	}
+
+	return TrackParse_ToRecordMonitorMode(SILVER::AZ_GetTrackItemRecordMonitoring_Parse(call->Get()));
+}
+
+AZ_RecordMonitorMode URigdocksSilver_Track_Parse::AZ_GetTrackIdRecordMonitoring_Parse(URigdocksRpcCall* call)
+{
+	if (call == nullptr)
+	{
+		return AZ_RecordMonitorMode::Off;
+	}
+
+	return TrackParse_ToRecordMonitorMode(SILVER::AZ_GetTrackIdRecordMonitoring_Parse(call->Get()));
+}
+
+AZ_RecordMonitorMode URigdocksSilver_Track_Parse::AZ_GetSelectedTrackIdRecordMonitoring_Parse(URigdocksRpcCall* call)
+{
+	if (call == nullptr)
+	{
+		return AZ_RecordMonitorMode::Off;
+	}
+
+	return TrackParse_ToRecordMonitorMode(SILVER::AZ_GetSelectedTrackIdRecordMonitoring_Parse(call->Get()));
+}
+
+void URigdocksSilver_Track_Parse::AZ_SetTrackItemRecordMonitoring_Parse(URigdocksRpcCall* call)
+{
+	if (call == nullptr)
+	{
+		return;
+	}
+
+	SILVER::AZ_SetTrackItemRecordMonitoring_Parse(call->Get());
+}
+
+void URigdocksSilver_Track_Parse::AZ_SetTrackIdRecordMonitoring_Parse(URigdocksRpcCall* call)
+{
+	if (call == nullptr)
+	{
+		return;
+	}
+
+	SILVER::AZ_SetTrackIdRecordMonitoring_Parse(call->Get());
+}
+
+void URigdocksSilver_Track_Parse::AZ_SetSelectedTrackIdRecordMonitoring_Parse(URigdocksRpcCall* call)
+{
+	if (call == nullptr)
+	{
+		return;
+	}
+
+	SILVER::AZ_SetSelectedTrackIdRecordMonitoring_Parse(call->Get());
+}
+
 void URigdocksSilver_Track_Parse::AZ_SetTrackAllRecording_Parse(URigdocksRpcCall* call)
 {
 	if (call == nullptr)

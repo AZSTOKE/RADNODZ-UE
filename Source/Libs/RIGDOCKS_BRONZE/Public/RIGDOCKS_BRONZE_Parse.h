@@ -206,6 +206,7 @@ namespace RADNODZ_client::BRONZE
 	std::tuple<MediaItem*, MediaItem*> AZ_SplitSelectedMediaId_Parse(const RpcCall& call);
 	std::tuple<MediaItem*, MediaItem*> AZ_SplitTrackMedia_Parse(const RpcCall& call);
 	std::tuple<MediaItem*, MediaItem*> AZ_SplitSelectedTrackMedia_Parse(const RpcCall& call);
+	std::string AZ_GetMediaItemSourcePath_Parse(const RpcCall& call);
 	double AZ_GetPlayCursorPosition_Parse(const RpcCall& call);
 	double AZ_SetPlayCursorPosition_Parse(const RpcCall& call);
 	int AZ_SetPlayCursorPositionFrame_Parse(const RpcCall& call);

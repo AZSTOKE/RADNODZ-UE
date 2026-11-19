@@ -28,4 +28,10 @@ public:
 
 	UFUNCTION(BlueprintCallable, Category = "RADNODZ|SILVER|File|Parse")
 	static TArray<FString> AZ_GetFilePathList_Parse(URigdocksRpcCall* call);
+
+	UFUNCTION(BlueprintCallable, Category = "RADNODZ|SILVER|File|Parse")
+	static FString AZ_GetAppDataPath_Parse(URigdocksRpcCall* call);
+
+	UFUNCTION(BlueprintCallable, Category = "RADNODZ|SILVER|File|Parse")
+	static FString AZ_GetBridgeDataPath_Parse(URigdocksRpcCall* call);
 };

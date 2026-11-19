@@ -126,6 +126,14 @@ namespace RADNODZ_client::SILVER
 	void AZ_SetTrackItemRecording(TcpClient& tcpClient, MediaTrack* track, bool setRec);
 	void AZ_SetTrackIdRecording(TcpClient& tcpClient, ReaProject* projID, int trackID, bool setRec);
 	void AZ_SetSelectedTrackIdRecording(TcpClient& tcpClient, ReaProject* projID, int selectTrackID, bool setRec);
+
+	// record monitoring: 0 = Off / 1 = On / 2 = Auto (not when playing). Get returns -1 on failure
+	int AZ_GetTrackItemRecordMonitoring(TcpClient& tcpClient, MediaTrack* track);
+	int AZ_GetTrackIdRecordMonitoring(TcpClient& tcpClient, ReaProject* projID, int trackID);
+	int AZ_GetSelectedTrackIdRecordMonitoring(TcpClient& tcpClient, ReaProject* projID, int selectTrackID);
+	void AZ_SetTrackItemRecordMonitoring(TcpClient& tcpClient, MediaTrack* track, int monitorMode);
+	void AZ_SetTrackIdRecordMonitoring(TcpClient& tcpClient, ReaProject* projID, int trackID, int monitorMode);
+	void AZ_SetSelectedTrackIdRecordMonitoring(TcpClient& tcpClient, ReaProject* projID, int selectTrackID, int monitorMode);
 	void AZ_SetTrackAllRecording(TcpClient& tcpClient, ReaProject* projID, bool setRec);
 	void AZ_SetTrackItemOnlyRecording(TcpClient& tcpClient, MediaTrack* track, bool setRec);
 	void AZ_SetTrackIdOnlyRecording(TcpClient& tcpClient, ReaProject* projID, int trackID, bool setRec);
@@ -203,6 +211,13 @@ namespace RADNODZ_client::SILVER
 	void AZ_SwitchProject(TcpClient& tcpClient, ReaProject* projID);
 	ReaProject* AZ_GetProjectFromName(TcpClient& tcpClient, std::string projectName);
 
+	// REAPER process: launch (waits until the RIGDOCKS extension is reachable) / is running / quit.
+	// LaunchReaper on a running REAPER opens projectPath in a new tab (does nothing if empty).
+	// QuitReaper: save = true saves changed projects then quits / false terminates without saving.
+	void AZ_LaunchReaper(TcpClient& tcpClient, std::string projectPath = "");
+	bool AZ_IsReaperRunning(TcpClient& tcpClient);
+	void AZ_QuitReaper(TcpClient& tcpClient, bool save = true);
+
 	/****************** device *****************************/
 
 	std::vector<std::string> AZ_GetLocalIpAddresse(TcpClient& tcpClient);
@@ -269,6 +284,13 @@ namespace RADNODZ_client::SILVER
 	std::string AZ_ReadFile(TcpClient& tcpClient, std::string directory, std::string filename);
 	PathInfo AZ_GetPathInfo(TcpClient& tcpClient, std::string file_path);
 	std::vector<std::string> AZ_GetFilePathList(TcpClient& tcpClient, std::string folder_path, std::string search_extension = "");
+
+	// 接続先 PC のアプリ用データフォルダ (RIGDOCKS Bridge フォルダの親)
+	//   Windows : %APPDATA% / macOS : ~/Library/Application Support
+	std::string AZ_GetAppDataPath(TcpClient& tcpClient);
+
+	// 接続先 PC の RIGDOCKS Bridge フォルダ
+	std::string AZ_GetBridgeDataPath(TcpClient& tcpClient);
 
 	/******************string*****************************/
 

@@ -601,4 +601,7 @@ public:
 
 	UFUNCTION(BlueprintCallable, Category = "RADNODZ|BRONZE|MediaItem|Split|Build")
 	static URigdocksRpcCall* AZ_SplitSelectedTrackMedia_Build(UReaProject* proj, int selectedTrackID, int trackItemID, double splitPosition);
+
+	UFUNCTION(BlueprintCallable, Category = "RADNODZ|BRONZE|MediaItem|Source|Build")
+	static URigdocksRpcCall* AZ_GetMediaItemSourcePath_Build(UMediaItem* item);
 };

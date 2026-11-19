@@ -128,3 +128,18 @@ UReaProject* URigdocksSilver_Project::AZ_GetProjectFromName(URadnodzClient* clie
 
 	return projObject;
 }
+
+void URigdocksSilver_Project::AZ_LaunchReaper(URadnodzClient* client, FString projectPath)
+{
+	SILVER::AZ_LaunchReaper(client->GetClient(), TCHAR_TO_UTF8(*projectPath));
+}
+
+bool URigdocksSilver_Project::AZ_IsReaperRunning(URadnodzClient* client)
+{
+	return SILVER::AZ_IsReaperRunning(client->GetClient());
+}
+
+void URigdocksSilver_Project::AZ_QuitReaper(URadnodzClient* client, bool save)
+{
+	SILVER::AZ_QuitReaper(client->GetClient(), save);
+}

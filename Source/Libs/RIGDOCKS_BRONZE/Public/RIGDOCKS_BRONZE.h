@@ -256,6 +256,8 @@ namespace RADNODZ_client::BRONZE
 	std::tuple<MediaItem*, MediaItem*> AZ_SplitTrackMedia(TcpClient& tcpClient, ReaProject* proj, int trackID, int trackItemID, double splitPosition);
 	std::tuple<MediaItem*, MediaItem*> AZ_SplitSelectedTrackMedia(TcpClient& tcpClient, ReaProject* proj, int selectedTrackID, int trackItemID, double splitPosition);
 
+	std::string AZ_GetMediaItemSourcePath(TcpClient& tcpClient, MediaItem* item);
+
 	/****************** Cursor *****************************/
 
 	double AZ_GetPlayCursorPosition(TcpClient& tcpClient, ReaProject* projID);

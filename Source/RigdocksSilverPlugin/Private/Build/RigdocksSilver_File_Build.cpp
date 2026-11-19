@@ -26,6 +26,24 @@ URigdocksRpcCall* URigdocksSilver_File_Build::AZ_ReadFile_Build(FString director
 	return obj;
 }
 
+URigdocksRpcCall* URigdocksSilver_File_Build::AZ_GetAppDataPath_Build()
+{
+	RpcCall c = SILVER::AZ_GetAppDataPath_Build();
+
+	URigdocksRpcCall* obj = NewObject<URigdocksRpcCall>();
+	obj->Set(c);
+	return obj;
+}
+
+URigdocksRpcCall* URigdocksSilver_File_Build::AZ_GetBridgeDataPath_Build()
+{
+	RpcCall c = SILVER::AZ_GetBridgeDataPath_Build();
+
+	URigdocksRpcCall* obj = NewObject<URigdocksRpcCall>();
+	obj->Set(c);
+	return obj;
+}
+
 URigdocksRpcCall* URigdocksSilver_File_Build::AZ_GetPathInfo_Build(FString file_path)
 {
 	RpcCall c = SILVER::AZ_GetPathInfo_Build(TCHAR_TO_UTF8(*file_path));

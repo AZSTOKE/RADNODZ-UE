@@ -22,6 +22,20 @@ FString URigdocksSilver_File::AZ_ReadFile(URadnodzClient* client, FString direct
 
 }
 
+FString URigdocksSilver_File::AZ_GetAppDataPath(URadnodzClient* client)
+{
+    std::string path = SILVER::AZ_GetAppDataPath(client->GetClient());
+
+	return UTF8_TO_TCHAR(path.c_str());
+}
+
+FString URigdocksSilver_File::AZ_GetBridgeDataPath(URadnodzClient* client)
+{
+    std::string path = SILVER::AZ_GetBridgeDataPath(client->GetClient());
+
+	return UTF8_TO_TCHAR(path.c_str());
+}
+
 FPathInfo URigdocksSilver_File::AZ_GetPathInfo(URadnodzClient* client, FString file_path)
 {
     PathInfo obj = SILVER::AZ_GetPathInfo(client->GetClient(), TCHAR_TO_UTF8(*file_path));

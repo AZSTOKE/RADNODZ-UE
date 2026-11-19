@@ -167,6 +167,28 @@ enum class AZ_ErrorCode : uint8
 
 		FailLoadAudioFile = 86,
 
+		FailGettingFPS = 87,
+
+		FormatNotSupportted = 88,
+
+		ReaperNotSupportted = 89,
+
+		VSTPluginNotFound = 90,
+
+		TSPInfoMismatch = 91,
+
+		SampleRateMismatch = 92,
+
+		ChannelCountMismatch = 93,
+
+		RecordingTooShort = 94,
+
+		ReferenceSignalNotDetected = 95,
+
+		InvalidChannelCount = 96,
+
+		UnsavedNewProject = 97,
+
 		NoneLicenseModule = 100,
 
 		InvalidLicenseModule = 101,
@@ -180,4 +202,58 @@ enum class AZ_ErrorCode : uint8
 		FailLoadLibraryModule = 105,
 
 		FailLoadLibraryFunction = 106,
+
+		NotMatchVersion = 107,
+
+		NotSupportedAbiVersion = 108,
+
+		ModuleNotFound = 109,
+
+		ModuleDisabled = 110,
+
+		ReaperNotRunning = 111,
+
+		TerminalNotRunning = 112,
+
+		ReaperPhaseFailed = 113,
+
+		TermsNotAgreed = 114,
+
+		ModuleUnsigned = 115,
+
+		ModuleSignatureInvalid = 116,
+
+		ModuleUnexpectedSigner = 117,
+
+		ModuleUntrustedRoot = 118,
+
+		ProtectedPath = 119,
+
+		PathPolicyInvalid = 120,
+
+		HostVerifierNotSet = 200,
+
+		HostKeyRejected = 201,
+
+		TlsHandshakeFailed = 202,
+
+		ClientAuthRejected = 203,
+
+		EnrollmentPending = 204,
+
+		EnrollmentClosed = 205,
+
+		EnrollmentRejected = 206,
+
+		TlsRequired = 209,
+
+		WinsockInit = 210,
+
+		SocketConnect = 211,
+
+		ResponseTimeout = 212,
+
+		SendTimeout = 213,
+
+		ConnectionLost = 214,
 };

@@ -1777,3 +1777,12 @@ URigdocksRpcCall* URigdocksBronze_MediaItem_Build::AZ_SplitSelectedTrackMedia_Bu
 	obj->Set(c);
 	return obj;
 }
+
+URigdocksRpcCall* URigdocksBronze_MediaItem_Build::AZ_GetMediaItemSourcePath_Build(UMediaItem* item)
+{
+	RpcCall c = BRONZE::AZ_GetMediaItemSourcePath_Build(UMediaItem::Get(item));
+
+	URigdocksRpcCall* obj = NewObject<URigdocksRpcCall>();
+	obj->Set(c);
+	return obj;
+}

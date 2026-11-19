@@ -239,6 +239,25 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "RADNODZ|SILVER|Track|Parse")
 	static void AZ_SetSelectedTrackIdRecording_Parse(URigdocksRpcCall* call);
 
+	// returns Off when the call failed (check the error code)
+	UFUNCTION(BlueprintCallable, Category = "RADNODZ|SILVER|Track|Parse")
+	static AZ_RecordMonitorMode AZ_GetTrackItemRecordMonitoring_Parse(URigdocksRpcCall* call);
+
+	UFUNCTION(BlueprintCallable, Category = "RADNODZ|SILVER|Track|Parse")
+	static AZ_RecordMonitorMode AZ_GetTrackIdRecordMonitoring_Parse(URigdocksRpcCall* call);
+
+	UFUNCTION(BlueprintCallable, Category = "RADNODZ|SILVER|Track|Parse")
+	static AZ_RecordMonitorMode AZ_GetSelectedTrackIdRecordMonitoring_Parse(URigdocksRpcCall* call);
+
+	UFUNCTION(BlueprintCallable, Category = "RADNODZ|SILVER|Track|Parse")
+	static void AZ_SetTrackItemRecordMonitoring_Parse(URigdocksRpcCall* call);
+
+	UFUNCTION(BlueprintCallable, Category = "RADNODZ|SILVER|Track|Parse")
+	static void AZ_SetTrackIdRecordMonitoring_Parse(URigdocksRpcCall* call);
+
+	UFUNCTION(BlueprintCallable, Category = "RADNODZ|SILVER|Track|Parse")
+	static void AZ_SetSelectedTrackIdRecordMonitoring_Parse(URigdocksRpcCall* call);
+
 	UFUNCTION(BlueprintCallable, Category = "RADNODZ|SILVER|Track|Parse")
 	static void AZ_SetTrackAllRecording_Parse(URigdocksRpcCall* call);
 

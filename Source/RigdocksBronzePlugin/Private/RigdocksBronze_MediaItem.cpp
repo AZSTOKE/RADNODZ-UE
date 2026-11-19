@@ -1166,3 +1166,10 @@ void URigdocksBronze_MediaItem::AZ_SplitSelectedTrackMedia(URadnodzClient* clien
 	rightItem = NewObject<UMediaItem>();
 	rightItem->SetPointer((void*)oRight);
 }
+
+FString URigdocksBronze_MediaItem::AZ_GetMediaItemSourcePath(URadnodzClient* client, UMediaItem* item)
+{
+	std::string sourcePath = BRONZE::AZ_GetMediaItemSourcePath(client->GetClient(), UMediaItem::Get(item));
+
+	return  UTF8_TO_TCHAR(sourcePath.c_str());
+}

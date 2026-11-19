@@ -666,6 +666,60 @@ URigdocksRpcCall* URigdocksSilver_Track_Build::AZ_SetSelectedTrackIdRecording_Bu
 	return obj;
 }
 
+URigdocksRpcCall* URigdocksSilver_Track_Build::AZ_GetTrackItemRecordMonitoring_Build(UMediaTrack* track)
+{
+	RpcCall c = SILVER::AZ_GetTrackItemRecordMonitoring_Build(UMediaTrack::Get(track));
+
+	URigdocksRpcCall* obj = NewObject<URigdocksRpcCall>();
+	obj->Set(c);
+	return obj;
+}
+
+URigdocksRpcCall* URigdocksSilver_Track_Build::AZ_GetTrackIdRecordMonitoring_Build(UReaProject* projID, int trackID)
+{
+	RpcCall c = SILVER::AZ_GetTrackIdRecordMonitoring_Build(UReaProject::Get(projID), trackID);
+
+	URigdocksRpcCall* obj = NewObject<URigdocksRpcCall>();
+	obj->Set(c);
+	return obj;
+}
+
+URigdocksRpcCall* URigdocksSilver_Track_Build::AZ_GetSelectedTrackIdRecordMonitoring_Build(UReaProject* projID, int selectTrackID)
+{
+	RpcCall c = SILVER::AZ_GetSelectedTrackIdRecordMonitoring_Build(UReaProject::Get(projID), selectTrackID);
+
+	URigdocksRpcCall* obj = NewObject<URigdocksRpcCall>();
+	obj->Set(c);
+	return obj;
+}
+
+URigdocksRpcCall* URigdocksSilver_Track_Build::AZ_SetTrackItemRecordMonitoring_Build(UMediaTrack* track, AZ_RecordMonitorMode monitorMode)
+{
+	RpcCall c = SILVER::AZ_SetTrackItemRecordMonitoring_Build(UMediaTrack::Get(track), (int)monitorMode);
+
+	URigdocksRpcCall* obj = NewObject<URigdocksRpcCall>();
+	obj->Set(c);
+	return obj;
+}
+
+URigdocksRpcCall* URigdocksSilver_Track_Build::AZ_SetTrackIdRecordMonitoring_Build(UReaProject* projID, int trackID, AZ_RecordMonitorMode monitorMode)
+{
+	RpcCall c = SILVER::AZ_SetTrackIdRecordMonitoring_Build(UReaProject::Get(projID), trackID, (int)monitorMode);
+
+	URigdocksRpcCall* obj = NewObject<URigdocksRpcCall>();
+	obj->Set(c);
+	return obj;
+}
+
+URigdocksRpcCall* URigdocksSilver_Track_Build::AZ_SetSelectedTrackIdRecordMonitoring_Build(UReaProject* projID, int selectTrackID, AZ_RecordMonitorMode monitorMode)
+{
+	RpcCall c = SILVER::AZ_SetSelectedTrackIdRecordMonitoring_Build(UReaProject::Get(projID), selectTrackID, (int)monitorMode);
+
+	URigdocksRpcCall* obj = NewObject<URigdocksRpcCall>();
+	obj->Set(c);
+	return obj;
+}
+
 URigdocksRpcCall* URigdocksSilver_Track_Build::AZ_SetTrackAllRecording_Build(UReaProject* projID, bool setRec)
 {
 	RpcCall c = SILVER::AZ_SetTrackAllRecording_Build(UReaProject::Get(projID), setRec);

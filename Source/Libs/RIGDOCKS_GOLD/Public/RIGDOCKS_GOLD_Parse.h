@@ -112,6 +112,12 @@ namespace RADNODZ_client::GOLD
 	std::vector<std::string> AZ_SVN_ExportAudioToProject_Parse(const RpcCall& call);
 	std::vector<std::string> AZ_SVN_ExportAudioToProject_CommitOnly_Parse(const RpcCall& call);
 
+	/****************** IR *****************************/
+	std::tuple<double, std::string, std::string> AZ_GenerateLinearTSP_Parse(const RpcCall& call);
+	std::tuple<double, std::string, std::string> AZ_GenerateLogTSP_Parse(const RpcCall& call);
+	void AZ_CalcImpulseResponseFromLinearTSP_Parse(const RpcCall& call);
+	void AZ_CalcImpulseResponseFromLogTSP_Parse(const RpcCall& call);
+
 	/****************** GSheet *****************************/
 	GSheetConnection* AZ_GSheet_Connect_UserAccount_Parse(const RpcCall& call);
 	void AZ_GSheet_Disconnect_Parse(const RpcCall& call);

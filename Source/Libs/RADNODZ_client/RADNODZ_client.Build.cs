@@ -20,6 +20,8 @@ public class RADNODZ_client : ModuleRules
             PublicAdditionalLibraries.Add(Path.Combine(ModuleDirectory, "x64", "Release", "mbedtls.lib"));
             PublicAdditionalLibraries.Add(Path.Combine(ModuleDirectory, "x64", "Release", "mbedx509.lib"));
             PublicAdditionalLibraries.Add(Path.Combine(ModuleDirectory, "x64", "Release", "mbedcrypto.lib"));
+            // zxing-cpp (referenced by RADNODZ_client for QR decoding)
+            PublicAdditionalLibraries.Add(Path.Combine(ModuleDirectory, "x64", "Release", "ZXing.lib"));
             // mbedTLS entropy on Windows uses BCryptGenRandom (bcrypt.lib).
             PublicSystemLibraries.Add("bcrypt.lib");
         }
@@ -30,11 +32,13 @@ public class RADNODZ_client : ModuleRules
             PublicAdditionalLibraries.Add(Path.Combine(ModuleDirectory, "Android", "arm64", "Release", "libmbedtls.a"));
             PublicAdditionalLibraries.Add(Path.Combine(ModuleDirectory, "Android", "arm64", "Release", "libmbedx509.a"));
             PublicAdditionalLibraries.Add(Path.Combine(ModuleDirectory, "Android", "arm64", "Release", "libmbedcrypto.a"));
+            PublicAdditionalLibraries.Add(Path.Combine(ModuleDirectory, "Android", "arm64", "Release", "libZXing.a"));
 
             PublicAdditionalLibraries.Add(Path.Combine(ModuleDirectory, "Android", "x86_64", "Release", "libRADNODZ_client.a"));
             PublicAdditionalLibraries.Add(Path.Combine(ModuleDirectory, "Android", "x86_64", "Release", "libmbedtls.a"));
             PublicAdditionalLibraries.Add(Path.Combine(ModuleDirectory, "Android", "x86_64", "Release", "libmbedx509.a"));
             PublicAdditionalLibraries.Add(Path.Combine(ModuleDirectory, "Android", "x86_64", "Release", "libmbedcrypto.a"));
+            PublicAdditionalLibraries.Add(Path.Combine(ModuleDirectory, "Android", "x86_64", "Release", "libZXing.a"));
         }
         else if (Target.Platform == UnrealTargetPlatform.Mac)
         {
@@ -42,6 +46,7 @@ public class RADNODZ_client : ModuleRules
             PublicAdditionalLibraries.Add(Path.Combine(ModuleDirectory, "Mac", "Release", "libmbedtls.a"));
             PublicAdditionalLibraries.Add(Path.Combine(ModuleDirectory, "Mac", "Release", "libmbedx509.a"));
             PublicAdditionalLibraries.Add(Path.Combine(ModuleDirectory, "Mac", "Release", "libmbedcrypto.a"));
+            PublicAdditionalLibraries.Add(Path.Combine(ModuleDirectory, "Mac", "Release", "libZXing.a"));
         }
     }
 }

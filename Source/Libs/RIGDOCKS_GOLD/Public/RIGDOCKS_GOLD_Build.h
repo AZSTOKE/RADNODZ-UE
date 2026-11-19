@@ -112,6 +112,12 @@ namespace RADNODZ_client::GOLD
 	RpcCall AZ_SVN_ExportAudioToProject_Build(std::string repositoryUrl, int revision, std::string toDir = "", std::string extension = "wav", bool toProjectDir = true);
 	RpcCall AZ_SVN_ExportAudioToProject_CommitOnly_Build(std::string repositoryUrl, int revision, std::string toDir = "", std::string extension = "wav", bool toProjectDir = true);
 
+	/****************** IR *****************************/
+	RpcCall AZ_GenerateLinearTSP_Build(std::string outputPath, int sampleRate = 48000, double sweepDuration = 5.0, double silenceDuration = 5.0, int repeatCount = 1);
+	RpcCall AZ_GenerateLogTSP_Build(std::string outputPath, int sampleRate = 48000, double sweepDuration = 10.0, double silenceDuration = 5.0, int repeatCount = 1, double startFreq = 20.0, double endFreq = 0.0);
+	RpcCall AZ_CalcImpulseResponseFromLinearTSP_Build(std::string tspInfoPath, std::vector<TSPRecordingGroup> recordingGroups, std::string outputPath, double irLength = 0.0, bool trimStart = true, bool normalize = true);
+	RpcCall AZ_CalcImpulseResponseFromLogTSP_Build(std::string tspInfoPath, std::vector<TSPRecordingGroup> recordingGroups, std::string outputPath, double irLength = 0.0, bool trimStart = true, bool normalize = true);
+
 	/****************** GSheet *****************************/
 	RpcCall AZ_GSheet_Connect_UserAccount_Build(std::string spreadSheetId, std::string clientId = "");
 	RpcCall AZ_GSheet_Disconnect_Build(GSheetConnection* connection);

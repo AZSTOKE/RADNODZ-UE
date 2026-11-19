@@ -57,6 +57,10 @@ namespace RADNODZ_client
         struct Impl;
         std::unique_ptr<Impl> impl_;
 
+        // Send the first frame of a connection, naming the target module.
+        // The host replies with success/failure before anything else is sent.
+        bool SendTargetFrame();
+
 		std::string ip_;
 		int port_;
 
@@ -73,6 +77,13 @@ namespace RADNODZ_client
 
         bool Connect();
 
+        // `ip` accepts a host name as well as an address literal; it is resolved
+        // with getaddrinfo at connect time. Naming the host keeps a pairing url
+        // valid across a DHCP lease or a DDNS update, since the pin is keyed on
+        // the node id rather than the address.
+        //
+        // IPv4 candidates are tried first because the server listens on IPv4
+        // only at the moment.
         bool Connect(const std::string& ip, const int port);
 
         // ===== Secure comms: identity (for mTLS) =====
@@ -105,8 +116,90 @@ namespace RADNODZ_client
         std::vector<PinnedServer> ListPinnedServers();
         bool RemovePinnedServer(const std::string& serverId);
 
+        // Pin a server *before* connecting.
+        //
+        // Used when the fingerprint was obtained out of band (a QR code or a
+        // pasted URL). With the pin already in place the first connection needs
+        // no verifier decision, so no trust-on-first-use window exists.
+        // Requires the storage directory to be set.
+        bool PinServer(const std::string& serverId, const std::string& fingerprint,
+            const std::string& publicKeyPem = std::string());
+
+        // Apply a pairing URL read from a QR code (or pasted).
+        //
+        // Sets the connection target and the pin in one step:
+        //   - server id / address / port taken from the URL
+        //   - the fingerprint is pinned, so the first connection needs no
+        //     trust-on-first-use decision
+        //
+        // Requires the storage directory to be set. Returns false when the URL
+        // is malformed or the pin could not be written.
+        bool ApplyServerPairingUrl(const std::string& url);
+
+        // ===== Routing =====
+        // The host owns a single public TCP port and routes the connection to
+        // the server module named here (a product id). Defaults to the product
+        // id this client was built for, so callers normally leave it alone.
+        void SetTargetProductId(const std::string& productId);
+
+        std::string GetTargetProductId() const;
+
+        // ===== Client key enrollment =====
+        //
+        // An unregistered client submits its own public key to the server; the
+        // operator then approves it. Requires TLS, so the identity must exist
+        // (GenerateIdentity) and the server must be pinned or verified.
+        enum class EnrollStatus
+        {
+            // Failed to reach the server / TLS could not be established.
+            Failed,
+
+            // Submitted (or already submitted); waiting for the operator.
+            Pending,
+
+            // This client key is already authorized: a normal Connect will work.
+            Approved,
+
+            // The server is not accepting requests right now.
+            Closed,
+
+            // Refused (proof-of-possession mismatch, bad input, pool full, ...).
+            Rejected,
+        };
+
+        // Submit this client's public key. `clientName` is a human-readable
+        // label shown to the operator; it is not verified.
+        EnrollStatus Enroll(const std::string& clientName);
+
+        // Send a request and wait for its response.
+        //
+        // One call occupies the connection for the whole exchange: concurrent
+        // calls from other threads are serialized rather than interleaved, so
+        // the framing cannot be corrupted. A caller can therefore be blocked by
+        // another thread's request that is still in flight.
+        //
+        // Returns an empty string on failure; `errorCode` / `errorMessage` then
+        // say whether the response timed out (212), the request could not be
+        // sent (213), or the connection dropped (214).
         std::string Send(const std::string& message);
 
+        // Deadline for waiting on a response, in seconds. 0 (the default) means
+        // no deadline: a dead peer is detected by TCP keepalive instead
+        // (~30 s), which keeps legitimately slow calls - a loudness analysis
+        // runs for tens of seconds - from being cut off.
+        //
+        // Set a value only where the caller knows its own upper bound.
+        void SetResponseTimeoutSec(int seconds);
+
+        int GetResponseTimeoutSec() const;
+
+        // Close the connection.
+        //
+        // Safe to call while another thread is waiting on a response: the
+        // socket is shut down first so that the waiting thread returns, and it
+        // is closed only once that thread has left (closing a descriptor out
+        // from under a blocked reader is not enough on Linux/Android, and the
+        // number could be reused by another socket).
         void Disconnect();
 
         bool IsConnected() const;

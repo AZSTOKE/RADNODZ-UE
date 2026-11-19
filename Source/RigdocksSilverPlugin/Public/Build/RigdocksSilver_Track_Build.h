@@ -239,6 +239,24 @@ public:
 	static URigdocksRpcCall* AZ_SetSelectedTrackIdRecording_Build(UReaProject* projID, int selectTrackID, bool setRec);
 
 	UFUNCTION(BlueprintCallable, Category = "RADNODZ|SILVER|Track|Build")
+	static URigdocksRpcCall* AZ_GetTrackItemRecordMonitoring_Build(UMediaTrack* track);
+
+	UFUNCTION(BlueprintCallable, Category = "RADNODZ|SILVER|Track|Build")
+	static URigdocksRpcCall* AZ_GetTrackIdRecordMonitoring_Build(UReaProject* projID, int trackID);
+
+	UFUNCTION(BlueprintCallable, Category = "RADNODZ|SILVER|Track|Build")
+	static URigdocksRpcCall* AZ_GetSelectedTrackIdRecordMonitoring_Build(UReaProject* projID, int selectTrackID);
+
+	UFUNCTION(BlueprintCallable, Category = "RADNODZ|SILVER|Track|Build")
+	static URigdocksRpcCall* AZ_SetTrackItemRecordMonitoring_Build(UMediaTrack* track, AZ_RecordMonitorMode monitorMode);
+
+	UFUNCTION(BlueprintCallable, Category = "RADNODZ|SILVER|Track|Build")
+	static URigdocksRpcCall* AZ_SetTrackIdRecordMonitoring_Build(UReaProject* projID, int trackID, AZ_RecordMonitorMode monitorMode);
+
+	UFUNCTION(BlueprintCallable, Category = "RADNODZ|SILVER|Track|Build")
+	static URigdocksRpcCall* AZ_SetSelectedTrackIdRecordMonitoring_Build(UReaProject* projID, int selectTrackID, AZ_RecordMonitorMode monitorMode);
+
+	UFUNCTION(BlueprintCallable, Category = "RADNODZ|SILVER|Track|Build")
 	static URigdocksRpcCall* AZ_SetTrackAllRecording_Build(UReaProject* projID, bool setRec);
 
 	UFUNCTION(BlueprintCallable, Category = "RADNODZ|SILVER|Track|Build")

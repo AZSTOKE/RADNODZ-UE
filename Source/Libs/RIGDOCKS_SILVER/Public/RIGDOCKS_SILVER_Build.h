@@ -84,6 +84,12 @@ namespace RADNODZ_client::SILVER
 	RpcCall AZ_SetTrackItemRecording_Build(MediaTrack* track, bool setRec);
 	RpcCall AZ_SetTrackIdRecording_Build(ReaProject* projID, int trackID, bool setRec);
 	RpcCall AZ_SetSelectedTrackIdRecording_Build(ReaProject* projID, int selectTrackID, bool setRec);
+	RpcCall AZ_GetTrackItemRecordMonitoring_Build(MediaTrack* track);
+	RpcCall AZ_GetTrackIdRecordMonitoring_Build(ReaProject* projID, int trackID);
+	RpcCall AZ_GetSelectedTrackIdRecordMonitoring_Build(ReaProject* projID, int selectTrackID);
+	RpcCall AZ_SetTrackItemRecordMonitoring_Build(MediaTrack* track, int monitorMode);
+	RpcCall AZ_SetTrackIdRecordMonitoring_Build(ReaProject* projID, int trackID, int monitorMode);
+	RpcCall AZ_SetSelectedTrackIdRecordMonitoring_Build(ReaProject* projID, int selectTrackID, int monitorMode);
 	RpcCall AZ_SetTrackAllRecording_Build(ReaProject* projID, bool setRec);
 	RpcCall AZ_SetTrackItemOnlyRecording_Build(MediaTrack* track, bool setRec);
 	RpcCall AZ_SetTrackIdOnlyRecording_Build(ReaProject* projID, int trackID, bool setRec);
@@ -144,6 +150,9 @@ namespace RADNODZ_client::SILVER
 	RpcCall AZ_CloseProject_Build(ReaProject* projID);
 	RpcCall AZ_SwitchProject_Build(ReaProject* projID);
 	RpcCall AZ_GetProjectFromName_Build(std::string projectName);
+	RpcCall AZ_LaunchReaper_Build(std::string projectPath = "");
+	RpcCall AZ_IsReaperRunning_Build();
+	RpcCall AZ_QuitReaper_Build(bool save = true);
 	RpcCall AZ_GetLocalIpAddresse_Build();
 	RpcCall AZ_GetDeviceName_Build();
 	RpcCall AZ_GetRecordingSampleRate_Build(ReaProject* projID);
@@ -186,6 +195,8 @@ namespace RADNODZ_client::SILVER
 	RpcCall AZ_ReadFile_Build(std::string directory, std::string filename);
 	RpcCall AZ_GetPathInfo_Build(std::string file_path);
 	RpcCall AZ_GetFilePathList_Build(std::string folder_path, std::string search_extension);
+	RpcCall AZ_GetAppDataPath_Build();
+	RpcCall AZ_GetBridgeDataPath_Build();
 	RpcCall AZ_CheckIncludeString_Build(std::string textString, std::string checkString);
 	RpcCall AZ_CheckSameString_Build(std::string textString, std::string checkString);
 	RpcCall AZ_CheckIncludePerfectString_Build(std::string textString, std::string checkString);

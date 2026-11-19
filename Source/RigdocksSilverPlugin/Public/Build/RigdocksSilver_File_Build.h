@@ -28,4 +28,10 @@ public:
 
 	UFUNCTION(BlueprintCallable, Category = "RADNODZ|SILVER|File|Build")
 	static URigdocksRpcCall* AZ_GetFilePathList_Build(FString folder_path, FString search_extension = "");
+
+	UFUNCTION(BlueprintCallable, Category = "RADNODZ|SILVER|File|Build")
+	static URigdocksRpcCall* AZ_GetAppDataPath_Build();
+
+	UFUNCTION(BlueprintCallable, Category = "RADNODZ|SILVER|File|Build")
+	static URigdocksRpcCall* AZ_GetBridgeDataPath_Build();
 };

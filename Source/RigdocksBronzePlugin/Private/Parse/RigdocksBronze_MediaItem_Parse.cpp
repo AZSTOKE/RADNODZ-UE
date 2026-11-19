@@ -2124,3 +2124,14 @@ void URigdocksBronze_MediaItem_Parse::AZ_SplitSelectedTrackMedia_Parse(URigdocks
 	rightItem = NewObject<UMediaItem>();
 	rightItem->SetPointer((void*)oRight);
 }
+
+FString URigdocksBronze_MediaItem_Parse::AZ_GetMediaItemSourcePath_Parse(URigdocksRpcCall* call)
+{
+	if (call == nullptr)
+	{
+		return FString();
+	}
+
+	std::string s = BRONZE::AZ_GetMediaItemSourcePath_Parse(call->Get());
+	return UTF8_TO_TCHAR(s.c_str());
+}

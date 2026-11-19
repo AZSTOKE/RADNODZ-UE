@@ -74,4 +74,13 @@ public:
 
 	UFUNCTION(BlueprintCallable, Category = "RADNODZ|SILVER|Project|Parse")
 	static UReaProject* AZ_GetProjectFromName_Parse(URigdocksRpcCall* call);
+
+	UFUNCTION(BlueprintCallable, Category = "RADNODZ|SILVER|Project|Parse")
+	static void AZ_LaunchReaper_Parse(URigdocksRpcCall* call);
+
+	UFUNCTION(BlueprintCallable, Category = "RADNODZ|SILVER|Project|Parse")
+	static bool AZ_IsReaperRunning_Parse(URigdocksRpcCall* call);
+
+	UFUNCTION(BlueprintCallable, Category = "RADNODZ|SILVER|Project|Parse")
+	static void AZ_QuitReaper_Parse(URigdocksRpcCall* call);
 };

@@ -19,6 +19,15 @@ enum class AZ_InputChannelType : uint8
 	Midi = 1,
 };
 
+// record monitoring (REAPER I_RECMON)
+UENUM(BlueprintType)
+enum class AZ_RecordMonitorMode : uint8
+{
+	Off = 0,
+	On = 1,
+	Auto = 2,	// monitor only while not playing (tape auto style)
+};
+
 UENUM(BlueprintType)
 enum class AZ_TrackMeterMode : uint8
 {
@@ -334,6 +343,31 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "RADNODZ|SILVER|Track",
 		meta = (BlueprintInternalUseOnly = "true", RequiredPins = "client"))
 	static void AZ_SetSelectedTrackIdRecording(URadnodzClient* client, UReaProject* projID, int selectTrackID, bool setRec);
+
+	// record monitoring. Get returns Off when the call failed (check the error code)
+	UFUNCTION(BlueprintCallable, Category = "RADNODZ|SILVER|Track",
+		meta = (BlueprintInternalUseOnly = "true", RequiredPins = "client"))
+	static AZ_RecordMonitorMode AZ_GetTrackItemRecordMonitoring(URadnodzClient* client, UMediaTrack* track);
+
+	UFUNCTION(BlueprintCallable, Category = "RADNODZ|SILVER|Track",
+		meta = (BlueprintInternalUseOnly = "true", RequiredPins = "client"))
+	static AZ_RecordMonitorMode AZ_GetTrackIdRecordMonitoring(URadnodzClient* client, UReaProject* projID, int trackID);
+
+	UFUNCTION(BlueprintCallable, Category = "RADNODZ|SILVER|Track",
+		meta = (BlueprintInternalUseOnly = "true", RequiredPins = "client"))
+	static AZ_RecordMonitorMode AZ_GetSelectedTrackIdRecordMonitoring(URadnodzClient* client, UReaProject* projID, int selectTrackID);
+
+	UFUNCTION(BlueprintCallable, Category = "RADNODZ|SILVER|Track",
+		meta = (BlueprintInternalUseOnly = "true", RequiredPins = "client"))
+	static void AZ_SetTrackItemRecordMonitoring(URadnodzClient* client, UMediaTrack* track, AZ_RecordMonitorMode monitorMode);
+
+	UFUNCTION(BlueprintCallable, Category = "RADNODZ|SILVER|Track",
+		meta = (BlueprintInternalUseOnly = "true", RequiredPins = "client"))
+	static void AZ_SetTrackIdRecordMonitoring(URadnodzClient* client, UReaProject* projID, int trackID, AZ_RecordMonitorMode monitorMode);
+
+	UFUNCTION(BlueprintCallable, Category = "RADNODZ|SILVER|Track",
+		meta = (BlueprintInternalUseOnly = "true", RequiredPins = "client"))
+	static void AZ_SetSelectedTrackIdRecordMonitoring(URadnodzClient* client, UReaProject* projID, int selectTrackID, AZ_RecordMonitorMode monitorMode);
 
 	UFUNCTION(BlueprintCallable, Category = "RADNODZ|SILVER|Track",
 		meta = (BlueprintInternalUseOnly = "true", RequiredPins = "client"))

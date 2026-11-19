@@ -30,6 +30,30 @@ FString URigdocksSilver_File_Parse::AZ_ReadFile_Parse(URigdocksRpcCall* call)
 	return UTF8_TO_TCHAR(text.c_str());
 }
 
+FString URigdocksSilver_File_Parse::AZ_GetAppDataPath_Parse(URigdocksRpcCall* call)
+{
+	if (call == nullptr)
+	{
+		return FString();
+	}
+
+	std::string path = SILVER::AZ_GetAppDataPath_Parse(call->Get());
+
+	return UTF8_TO_TCHAR(path.c_str());
+}
+
+FString URigdocksSilver_File_Parse::AZ_GetBridgeDataPath_Parse(URigdocksRpcCall* call)
+{
+	if (call == nullptr)
+	{
+		return FString();
+	}
+
+	std::string path = SILVER::AZ_GetBridgeDataPath_Parse(call->Get());
+
+	return UTF8_TO_TCHAR(path.c_str());
+}
+
 FPathInfo URigdocksSilver_File_Parse::AZ_GetPathInfo_Parse(URigdocksRpcCall* call)
 {
 	if (call == nullptr)

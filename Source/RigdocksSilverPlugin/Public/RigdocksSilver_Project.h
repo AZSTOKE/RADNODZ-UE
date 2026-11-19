@@ -93,4 +93,19 @@ public:
 		meta = (BlueprintInternalUseOnly = "true", RequiredPins = "client"))
 	static UReaProject* AZ_GetProjectFromName(URadnodzClient* client, FString projectName);
 
+	// Launch REAPER and wait until the RIGDOCKS extension is reachable.
+	// If REAPER is already running, opens projectPath in a new tab (does nothing if empty).
+	UFUNCTION(BlueprintCallable, Category = "RADNODZ|SILVER|Project",
+		meta = (BlueprintInternalUseOnly = "true", RequiredPins = "client"))
+	static void AZ_LaunchReaper(URadnodzClient* client, FString projectPath = TEXT(""));
+
+	UFUNCTION(BlueprintCallable, Category = "RADNODZ|SILVER|Project",
+		meta = (BlueprintInternalUseOnly = "true", RequiredPins = "client"))
+	static bool AZ_IsReaperRunning(URadnodzClient* client);
+
+	// save = true: save changed projects then quit / false: terminate without saving
+	UFUNCTION(BlueprintCallable, Category = "RADNODZ|SILVER|Project",
+		meta = (BlueprintInternalUseOnly = "true", RequiredPins = "client"))
+	static void AZ_QuitReaper(URadnodzClient* client, bool save = true);
+
 };

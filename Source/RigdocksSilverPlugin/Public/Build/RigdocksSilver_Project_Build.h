@@ -74,4 +74,13 @@ public:
 
 	UFUNCTION(BlueprintCallable, Category = "RADNODZ|SILVER|Project|Build")
 	static URigdocksRpcCall* AZ_GetProjectFromName_Build(FString projectName);
+
+	UFUNCTION(BlueprintCallable, Category = "RADNODZ|SILVER|Project|Build")
+	static URigdocksRpcCall* AZ_LaunchReaper_Build(FString projectPath = TEXT(""));
+
+	UFUNCTION(BlueprintCallable, Category = "RADNODZ|SILVER|Project|Build")
+	static URigdocksRpcCall* AZ_IsReaperRunning_Build();
+
+	UFUNCTION(BlueprintCallable, Category = "RADNODZ|SILVER|Project|Build")
+	static URigdocksRpcCall* AZ_QuitReaper_Build(bool save = true);
 };

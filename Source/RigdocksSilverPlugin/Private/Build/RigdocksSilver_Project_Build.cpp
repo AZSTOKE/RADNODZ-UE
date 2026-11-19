@@ -180,3 +180,30 @@ URigdocksRpcCall* URigdocksSilver_Project_Build::AZ_GetProjectFromName_Build(FSt
 	obj->Set(c);
 	return obj;
 }
+
+URigdocksRpcCall* URigdocksSilver_Project_Build::AZ_LaunchReaper_Build(FString projectPath)
+{
+	RpcCall c = SILVER::AZ_LaunchReaper_Build(TCHAR_TO_UTF8(*projectPath));
+
+	URigdocksRpcCall* obj = NewObject<URigdocksRpcCall>();
+	obj->Set(c);
+	return obj;
+}
+
+URigdocksRpcCall* URigdocksSilver_Project_Build::AZ_IsReaperRunning_Build()
+{
+	RpcCall c = SILVER::AZ_IsReaperRunning_Build();
+
+	URigdocksRpcCall* obj = NewObject<URigdocksRpcCall>();
+	obj->Set(c);
+	return obj;
+}
+
+URigdocksRpcCall* URigdocksSilver_Project_Build::AZ_QuitReaper_Build(bool save)
+{
+	RpcCall c = SILVER::AZ_QuitReaper_Build(save);
+
+	URigdocksRpcCall* obj = NewObject<URigdocksRpcCall>();
+	obj->Set(c);
+	return obj;
+}

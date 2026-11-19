@@ -603,6 +603,42 @@ void URigdocksSilver_Track::AZ_SetSelectedTrackIdRecording(URadnodzClient* clien
 	SILVER::AZ_SetSelectedTrackIdRecording(client->GetClient(), UReaProject::Get(projID), selectTrackID, setRec);
 }
 
+// -1 (failure) and unknown values are returned as Off
+static AZ_RecordMonitorMode ToRecordMonitorMode(int value)
+{
+	return (value >= 0 && value <= 2) ? (AZ_RecordMonitorMode)value : AZ_RecordMonitorMode::Off;
+}
+
+AZ_RecordMonitorMode URigdocksSilver_Track::AZ_GetTrackItemRecordMonitoring(URadnodzClient* client, UMediaTrack* track)
+{
+	return ToRecordMonitorMode(SILVER::AZ_GetTrackItemRecordMonitoring(client->GetClient(), UMediaTrack::Get(track)));
+}
+
+AZ_RecordMonitorMode URigdocksSilver_Track::AZ_GetTrackIdRecordMonitoring(URadnodzClient* client, UReaProject* projID, int trackID)
+{
+	return ToRecordMonitorMode(SILVER::AZ_GetTrackIdRecordMonitoring(client->GetClient(), UReaProject::Get(projID), trackID));
+}
+
+AZ_RecordMonitorMode URigdocksSilver_Track::AZ_GetSelectedTrackIdRecordMonitoring(URadnodzClient* client, UReaProject* projID, int selectTrackID)
+{
+	return ToRecordMonitorMode(SILVER::AZ_GetSelectedTrackIdRecordMonitoring(client->GetClient(), UReaProject::Get(projID), selectTrackID));
+}
+
+void URigdocksSilver_Track::AZ_SetTrackItemRecordMonitoring(URadnodzClient* client, UMediaTrack* track, AZ_RecordMonitorMode monitorMode)
+{
+	SILVER::AZ_SetTrackItemRecordMonitoring(client->GetClient(), UMediaTrack::Get(track), (int)monitorMode);
+}
+
+void URigdocksSilver_Track::AZ_SetTrackIdRecordMonitoring(URadnodzClient* client, UReaProject* projID, int trackID, AZ_RecordMonitorMode monitorMode)
+{
+	SILVER::AZ_SetTrackIdRecordMonitoring(client->GetClient(), UReaProject::Get(projID), trackID, (int)monitorMode);
+}
+
+void URigdocksSilver_Track::AZ_SetSelectedTrackIdRecordMonitoring(URadnodzClient* client, UReaProject* projID, int selectTrackID, AZ_RecordMonitorMode monitorMode)
+{
+	SILVER::AZ_SetSelectedTrackIdRecordMonitoring(client->GetClient(), UReaProject::Get(projID), selectTrackID, (int)monitorMode);
+}
+
 void URigdocksSilver_Track::AZ_SetTrackAllRecording(URadnodzClient* client, UReaProject* projID, bool setRec)
 {
 	SILVER::AZ_SetTrackAllRecording(client->GetClient(), UReaProject::Get(projID), setRec);

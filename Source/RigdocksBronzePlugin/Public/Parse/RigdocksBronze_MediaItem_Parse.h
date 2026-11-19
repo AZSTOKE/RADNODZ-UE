@@ -602,4 +602,7 @@ public:
 
 	UFUNCTION(BlueprintCallable, Category = "RADNODZ|BRONZE|MediaItem|Split|Parse")
 	static void AZ_SplitSelectedTrackMedia_Parse(URigdocksRpcCall* call, UMediaItem*& leftItem, UMediaItem*& rightItem);
+
+	UFUNCTION(BlueprintCallable, Category = "RADNODZ|BRONZE|MediaItem|Source|Parse")
+	static FString AZ_GetMediaItemSourcePath_Parse(URigdocksRpcCall* call);
 };

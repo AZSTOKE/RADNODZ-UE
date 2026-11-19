@@ -28,7 +28,8 @@ public class RadnodzClientPlugin : ModuleRules
 				"Slate",
 				"SlateCore",
                 "Sockets",
-				"Networking"
+				"Networking",
+				"ImageWrapper"
 				// ... add private dependencies that you statically link with here ...	
 			}
 			);

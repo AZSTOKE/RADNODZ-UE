@@ -84,6 +84,12 @@ namespace RADNODZ_client::SILVER
 	void AZ_SetTrackItemRecording_Parse(const RpcCall& call);
 	void AZ_SetTrackIdRecording_Parse(const RpcCall& call);
 	void AZ_SetSelectedTrackIdRecording_Parse(const RpcCall& call);
+	int AZ_GetTrackItemRecordMonitoring_Parse(const RpcCall& call);
+	int AZ_GetTrackIdRecordMonitoring_Parse(const RpcCall& call);
+	int AZ_GetSelectedTrackIdRecordMonitoring_Parse(const RpcCall& call);
+	void AZ_SetTrackItemRecordMonitoring_Parse(const RpcCall& call);
+	void AZ_SetTrackIdRecordMonitoring_Parse(const RpcCall& call);
+	void AZ_SetSelectedTrackIdRecordMonitoring_Parse(const RpcCall& call);
 	void AZ_SetTrackAllRecording_Parse(const RpcCall& call);
 	void AZ_SetTrackItemOnlyRecording_Parse(const RpcCall& call);
 	void AZ_SetTrackIdOnlyRecording_Parse(const RpcCall& call);
@@ -144,6 +150,9 @@ namespace RADNODZ_client::SILVER
 	void AZ_CloseProject_Parse(const RpcCall& call);
 	void AZ_SwitchProject_Parse(const RpcCall& call);
 	ReaProject* AZ_GetProjectFromName_Parse(const RpcCall& call);
+	void AZ_LaunchReaper_Parse(const RpcCall& call);
+	bool AZ_IsReaperRunning_Parse(const RpcCall& call);
+	void AZ_QuitReaper_Parse(const RpcCall& call);
 	std::vector<std::string> AZ_GetLocalIpAddresse_Parse(const RpcCall& call);
 	std::string AZ_GetDeviceName_Parse(const RpcCall& call);
 	double AZ_GetRecordingSampleRate_Parse(const RpcCall& call);
@@ -186,6 +195,8 @@ namespace RADNODZ_client::SILVER
 	std::string AZ_ReadFile_Parse(const RpcCall& call);
 	PathInfo AZ_GetPathInfo_Parse(const RpcCall& call);
 	std::vector<std::string> AZ_GetFilePathList_Parse(const RpcCall& call);
+	std::string AZ_GetAppDataPath_Parse(const RpcCall& call);
+	std::string AZ_GetBridgeDataPath_Parse(const RpcCall& call);
 	bool AZ_CheckIncludeString_Parse(const RpcCall& call);
 	bool AZ_CheckSameString_Parse(const RpcCall& call);
 	bool AZ_CheckIncludePerfectString_Parse(const RpcCall& call);

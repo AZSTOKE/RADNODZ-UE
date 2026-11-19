@@ -206,6 +206,7 @@ namespace RADNODZ_client::BRONZE
 	RpcCall AZ_SplitSelectedMediaId_Build(ReaProject* proj, int selectedItemID, double splitPosition);
 	RpcCall AZ_SplitTrackMedia_Build(ReaProject* proj, int trackID, int trackItemID, double splitPosition);
 	RpcCall AZ_SplitSelectedTrackMedia_Build(ReaProject* proj, int selectedTrackID, int trackItemID, double splitPosition);
+	RpcCall AZ_GetMediaItemSourcePath_Build(MediaItem* item);
 	RpcCall AZ_GetPlayCursorPosition_Build(ReaProject* projID);
 	RpcCall AZ_SetPlayCursorPosition_Build(ReaProject* projID, int startEndType, double setPos);
 	RpcCall AZ_SetPlayCursorPositionFrame_Build(ReaProject* projID, int startEndType, int setPosFrame);
