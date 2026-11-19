@@ -13,9 +13,10 @@ Blueprint / C++ から AZ_* API を呼び出し、REAPER や Wwise などのオ�
 
 ## 導入方法
 
-1. [Releases](../../releases) から `RADNODZ_v<バージョン>.zip` をダウンロードします。
+1. [Releases](../../releases) から `RADNODZ_UE_v<バージョン>.zip` をダウンロードします。
    (自動で添付される「Source code (zip)」にはコンパイル済みライブラリが含まれないため、使用できません。)
-2. ZIP をプロジェクトの `Plugins` フォルダに展開し、`Plugins/RADNODZ_UE` となるように配置します。
+2. ZIP の中にある `RADNODZ_UE` フォルダを、プロジェクトの `Plugins` フォルダにコピーします(`Plugins/RADNODZ_UE` となるように配置します)。
+   Windows の「すべて展開」を使うと、ZIP 名のフォルダ(`RADNODZ_UE_v<バージョン>`)の中に `RADNODZ_UE` ができます。その場合も、中の `RADNODZ_UE` フォルダだけを `Plugins` に移してください。
 3. プロジェクトファイルを再生成してビルドします。
 4. エディタの「プラグイン」で RADNODZ を有効にします。
 
